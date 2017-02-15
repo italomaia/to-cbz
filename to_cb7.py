@@ -32,6 +32,6 @@ def main(args):
     pool.join()
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     import sys
     main(sys.argv[1:])

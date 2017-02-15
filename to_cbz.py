@@ -5,10 +5,12 @@ import os
 import zipfile
 from multiprocessing import Pool
 
+
 def make_filename(dirname, ext):
     if dirname.endswith("/"):
         dirname = dirname[:-1]
     return "%s.%s" % (dirname, ext)
+
 
 def to_cbz(dirname):
     cbz_filename = make_filename(dirname, 'cbz')
@@ -36,6 +38,6 @@ def main(args):
     pool.join()
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     import sys
     main(sys.argv[1:])
