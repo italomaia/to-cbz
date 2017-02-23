@@ -6,6 +6,15 @@ import subprocess
 from multiprocessing import Pool
 
 
+def cmd_exists(cmd):
+    return subprocess.call(
+        "type " + cmd,
+        shell=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE
+    ) == 0
+
+
 def make_filename(dirname, ext):
     if dirname.endswith("/"):
         dirname = dirname[:-1]
@@ -18,6 +27,10 @@ def to_cb7(dirname):
 
 
 def main(args):
+    if not cmd_exists("7za"):
+        print("7za could not be found. Exit.")
+        exit(0)
+
     pool = Pool()
     for arg in args:
         if os.path.isdir(arg):
